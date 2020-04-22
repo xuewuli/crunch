@@ -47,7 +47,11 @@
 
 #define CRNLIB_USE_UNALIGNED_INT_LOADS 1
 #define CRNLIB_RESTRICT __restrict
-#define CRNLIB_FORCE_INLINE __forceinline
+#ifdef __APPLE__
+   #define CRNLIB_FORCE_INLINE inline __attribute__((__always_inline__))
+#else
+   #define CRNLIB_FORCE_INLINE inline __attribute__((__always_inline__,__gnu_inline__))
+#endif
 
 #if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
 #define CRNLIB_USE_MSVC_INTRINSICS 1
@@ -82,7 +86,11 @@
 
 #define CRNLIB_RESTRICT
 
+#ifdef __APPLE__
+#define CRNLIB_FORCE_INLINE inline __attribute__((__always_inline__))
+#else
 #define CRNLIB_FORCE_INLINE inline __attribute__((__always_inline__, __gnu_inline__))
+#endif
 
 #define CRNLIB_INT64_FORMAT_SPECIFIER "%lli"
 #define CRNLIB_UINT64_FORMAT_SPECIFIER "%llu"

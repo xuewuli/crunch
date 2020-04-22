@@ -1,9 +1,15 @@
 // File: crn_mem.cpp
 // See Copyright Notice and license at the end of inc/crnlib.h
+#if defined(__APPLE__)
+#include <malloc/malloc.h>
+#else
+#include <malloc.h>
+#endif
+
 #include "crn_core.h"
 #include "crn_console.h"
 #include "../inc/crnlib.h"
-#include <malloc.h>
+
 #if CRNLIB_USE_WIN32_API
 #include "crn_winhdr.h"
 #endif
@@ -11,7 +17,11 @@
 #define CRNLIB_MEM_STATS 0
 
 #if !CRNLIB_USE_WIN32_API
+#if defined(__APPLE__)
+#define _msize malloc_size
+#else
 #define _msize malloc_usable_size
+#endif
 #endif
 
 namespace crnlib {

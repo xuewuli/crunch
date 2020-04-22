@@ -460,8 +460,8 @@ dynamic_string& dynamic_string::remap(int from_char, int to_char) {
   return *this;
 }
 
-#ifdef CRNLIB_BUILD_DEBUG
 void dynamic_string::check() const {
+#ifdef CRNLIB_BUILD_DEBUG
   if (!m_pStr) {
     CRNLIB_ASSERT(!m_buf_size && !m_len);
   } else {
@@ -473,8 +473,8 @@ void dynamic_string::check() const {
     CRNLIB_ASSERT(strlen(m_pStr) == m_len);
 #endif
   }
-}
 #endif
+}
 
 bool dynamic_string::ensure_buf(uint len, bool preserve_contents) {
   uint buf_size_needed = len + 1;

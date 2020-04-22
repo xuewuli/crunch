@@ -23,7 +23,11 @@ inline void query_counter_frequency(timer_ticks* pTicks) {
   QueryPerformanceFrequency(reinterpret_cast<LARGE_INTEGER*>(pTicks));
 }
 #elif defined(__GNUC__)
+#ifdef __APPLE__
+#include <sys/time.h>
+#else
 #include <sys/timex.h>
+#endif
 inline void query_counter(timer_ticks* pTicks) {
   struct timeval cur_time;
   gettimeofday(&cur_time, NULL);

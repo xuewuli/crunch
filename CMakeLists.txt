@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 
+add_compile_options(-fPIC)
+
 set(CRUNCH_PROJECT_NAME crunch)
 set(CRUNCH_LIBRARY_NAME crn)
 set(CRUNCH_EXE_NAME crunch)
@@ -19,3 +21,5 @@ endif(BUILD_EXAMPLES)
 
 add_subdirectory(crunch _crunch)
 add_subdirectory(crnlib)
+
+add_subdirectory(tocrn _tocrn)

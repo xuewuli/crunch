@@ -1,3 +1,11 @@
+**整合uinty版crunch
+
+  * 主要改动为支持mac&ios
+  * 仅cmake工程可用
+  * 增加一个so（tocrn）的封装用于lua ffi调用
+
+---
+
 **Daemon fork of crunch: The Daemon engine uses the *master* branch, which currently tracks the
 [Unity fork](https://github.com/Unity-Technologies/crunch/tree/unity), with a few additional
 minor fixes.**
